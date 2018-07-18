@@ -2,6 +2,7 @@
   taskDefinition:: import 'taskDefinition.libsonnet',
   containerDefinition:: import 'containerDefinition.libsonnet',
   serviceDefinition:: import 'serviceDefinition.libsonnet',
+  clusterDefinition:: import 'clusterDefinition.libsonnet',
   // pruneDefinition exposes the same behavior as std.prune --
   // (removes empty values) but preserves empty _arrays_.
   //

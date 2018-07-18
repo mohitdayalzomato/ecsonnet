@@ -1,0 +1,7 @@
+{
+  new(
+    clusterName,
+  ):: {
+    clusterName: clusterName,
+  },
+}
