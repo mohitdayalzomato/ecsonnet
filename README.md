@@ -3,9 +3,11 @@
 This repository contains a collection of JSONNET libraries which describe ECS service, task, and container definitions.
 
 
-# Examples
+# Building The Examples
 
-Simply run `jsonnet exampleYouWantToSee.jsonnet` to see the output from a given example.  For example,
+**Option 1**: Build with bazel by running `bazel build //examples/...`
+
+**Option 2**: Simply run `jsonnet exampleYouWantToSee.jsonnet` to see the output from a given example.  For example,
 we can view the provided sample invocation of taskDefinition by running `jsonnet exampleTaskDefinition.jsonnet`.
 The output can be seen below:
 
