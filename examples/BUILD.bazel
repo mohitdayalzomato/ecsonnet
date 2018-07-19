@@ -1,0 +1,50 @@
+load("@io_bazel_rules_jsonnet//jsonnet:jsonnet.bzl", "jsonnet_to_json")
+
+jsonnet_to_json(
+    name = "example_cluster",
+    src = "exampleClusterDefinition.jsonnet",
+    outs = [
+        "exampleClusterDefinition.json",
+    ],
+    deps = [
+        "//ecs:ecs_libraries",
+    ],
+    visibility = ["//visibility:public"],
+)
+
+jsonnet_to_json(
+    name = "example_service",
+    src = "exampleServiceDefinition.jsonnet",
+    outs = [
+        "exampleServiceDefinition.json",
+    ],
+    deps = [
+        "//ecs:ecs_libraries",
+    ],
+    visibility = ["//visibility:public"],
+)
+
+jsonnet_to_json(
+    name = "example_task",
+    src = "exampleTaskDefinition.jsonnet",
+    outs = [
+        "exampleTaskDefinition.json",
+    ],
+    deps = [
+        "//ecs:ecs_libraries",
+    ],
+    visibility = ["//visibility:public"],
+)
+
+jsonnet_to_json(
+    name = "example_container",
+    src = "exampleContainerDefinition.jsonnet",
+    outs = [
+        "exampleContainerDefinition.json",
+    ],
+    deps = [
+        "//ecs:ecs_libraries",
+    ],
+    visibility = ["//visibility:public"],
+)
+

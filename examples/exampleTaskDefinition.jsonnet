@@ -1,4 +1,4 @@
-local ecs = import 'ecs.libsonnet';
+local ecs = import 'ecs/ecs.libsonnet';
 
 local exampleTaskDefinition = ecs.taskDefinition.new(
   family='family_name',

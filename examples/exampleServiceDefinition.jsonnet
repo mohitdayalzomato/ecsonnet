@@ -1,4 +1,4 @@
-local ecs = import 'ecs.libsonnet';
+local ecs = import 'ecs/ecs.libsonnet';
 
 local exampleServiceDefinition = ecs.serviceDefinition.new(
   serviceName='service-name',
