@@ -18,7 +18,7 @@
     placementStrategy=[]
   ):: {
     cluster: cluster,
-    servicename: serviceName,
+    serviceName: serviceName,
     loadBalancers: if loadBalancers == [] then null else loadBalancers,
     serviceRegistries: if serviceRegistries == [] then null else serviceRegistries,
     taskDefinition: taskDefinition,
@@ -31,7 +31,12 @@
     networkConfiguration: if networkConfiguration == [] then null else networkConfiguration,
     placementConstraints: if placementConstraints == [] then null else placementConstraints,
     placementStrategy: if placementStrategy == [] then null else placementStrategy,
-    healthCheckGracePeriodSeconds: healthCheckGracePeriodSeconds,
+    healthCheckGracePeriodSeconds:
+      // healthCheckGracePeriod is not valid if no loadBalancers are configured.
+      if self.loadBalancers == [] || self.loadBalancers == null then
+        null
+      else
+        healthCheckGracePeriodSeconds,
     schedulingStrategy: schedulingStrategy,
   },
 }

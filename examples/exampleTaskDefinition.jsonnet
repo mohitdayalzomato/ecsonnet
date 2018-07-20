@@ -1,10 +1,10 @@
 local ecs = import 'ecs/ecs.libsonnet';
 
-local exampleTaskDefinition = ecs.taskDefinition.new(
+local exampleTaskDefinition = ecs.task.definition.new(
   family='family_name',
   containerDefinitions=[
-    ecs.containerDefinition.new('service', 'library/debian').addPortMapping('80', '80', 'tcp'),
-    ecs.containerDefinition.new(
+    ecs.container.definition.new('service', 'library/debian').addPortMapping('80', '80', 'tcp'),
+    ecs.container.definition.new(
       name='service2',
       image='library/ubuntu',
       memoryReservationMb=2048,

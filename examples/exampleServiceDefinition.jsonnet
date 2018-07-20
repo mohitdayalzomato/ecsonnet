@@ -1,6 +1,6 @@
 local ecs = import 'ecs/ecs.libsonnet';
 
-local exampleServiceDefinition = ecs.serviceDefinition.new(
+local exampleServiceDefinition = ecs.service.definition.new(
   serviceName='service-name',
   cluster='arn:aws:ecs:us-west-2:0000000000000:cluster/cluster-name',
   desiredCount=1,
