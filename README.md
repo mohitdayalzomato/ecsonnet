@@ -1,9 +1,48 @@
 # github.com/dan-compton/ecsonnet
 
-This repository contains a collection of JSONNET libraries which describe ECS service, task, and container definitions.
+This repository contains
+* A collection of JSONNET libraries which describe ECS service, task, and container definitions.
+* A collection of bazel rules (rules_ecs) for ECS service creation and deletion as well as task registration.
+
+## rules_ecs
+
+`rules_ecs` is a collection of bazel rules for working with ecs services and tasks.
+
+### Service Creation
+
+To create a service in ECS add the following to your BUILD.bazel in the package
+that contains your ecs service definition JSONNET (e.g. `examples/`):
+
+```
+ecs_service(
+    name = "example_service",
+    src = ":example_service_def",
+    cluster_arn = "arn:aws:ecs:us-west-2:000000000000:cluster/your-cluster",
+    visibility = ["//visibility:public"],
+)
+```
+_Note: `cluster_arn=` must be adjusted to point to the target ECS cluster and `src=` must point to the label of the jsonnet_to_json rule which builds your service definition._
+
+Ensure that a task is registered for your service, then run: `bazel run //examples:example_service.create`
 
 
-# Building The Examples
+### Task Creation
+
+To register a new task definition in ECS add the following to your BUILD.bazel in the package
+that contains your ecs service definition JSONNET (e.g. `examples/`):
+
+```
+ecs_task(
+    name = "example_task",
+    src = ":example_task_def",
+    visibility = ["//visibility:public"],
+)
+```
+_Note: src= must point to the label of the jsonnet_to_json rule which builds your task definition._
+
+Run `bazel run //examples:example_task.create`
+
+## Building The Examples
 
 **Option 1**: Build with bazel by running `bazel build //examples/...`
 
