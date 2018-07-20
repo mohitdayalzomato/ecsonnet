@@ -13,7 +13,7 @@ jsonnet_to_json(
 )
 
 jsonnet_to_json(
-    name = "example_service",
+    name = "example_service_def",
     src = "exampleServiceDefinition.jsonnet",
     outs = [
         "exampleServiceDefinition.json",
@@ -23,9 +23,15 @@ jsonnet_to_json(
     ],
     visibility = ["//visibility:public"],
 )
+ecs_service(
+    name = "example_service",
+    src = ":example_service_def",
+    cluster_arn = "arn:aws:ecs:us-west-2:000000000000:cluster/your-cluster",
+    visibility = ["//visibility:public"],
+)
 
 jsonnet_to_json(
-    name = "example_task",
+    name = "example_task_def",
     src = "exampleTaskDefinition.jsonnet",
     outs = [
         "exampleTaskDefinition.json",
@@ -35,9 +41,14 @@ jsonnet_to_json(
     ],
     visibility = ["//visibility:public"],
 )
+ecs_task(
+    name = "example_task",
+    src = ":example_task_def",
+    visibility = ["//visibility:public"],
+)
 
 jsonnet_to_json(
-    name = "example_container",
+    name = "example_container_def",
     src = "exampleContainerDefinition.jsonnet",
     outs = [
         "exampleContainerDefinition.json",
